@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        File file = new File("/Users/xiaoying.sun/Advent2022/src/day01/day01.txt");
+        File file = new File("src/day01/day01.txt");
 
         BufferedReader br = new BufferedReader(new FileReader(file));
 
@@ -35,7 +35,7 @@ public class Main {
         }
 
         long result = Arrays.stream(topThree).sum();
-
+        System.out.println(topThree[0]);
         System.out.println(result);
     }
 }
