@@ -9,20 +9,20 @@ public class Main {
         File file = new File("src/day03/day03.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
-        String line1, line2;
+
         int result=0;
         while ((line=br.readLine())!= null){
 
 //            int mid = line.length() /2;
 //            String line1 = line.substring(0,mid);
 //            String line2 = line.substring(mid);
-
+//
 //            if(line1.length() != line2.length()){
 //                throw new RuntimeException("Unequal division!");
 //            }
-//            result += getWeight(getSameChar(line1, line2));
+//            result += getSameChar(line1, line2);
 
-
+            String line1, line2;
             line1 = br.readLine();
             line2 = br.readLine();
             result += getSameChar(getSameString(line, line1), getSameString(line1, line2));
