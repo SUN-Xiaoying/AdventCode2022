@@ -1,24 +1,23 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Stack;
+
 public class Main {
-    public static void main(String[] args) {
-        String line = "30-31,8-30";
-        String[] chars = line.replace(",", "-").split("-");
-        int[] nums= new int[4];
+    public static void main(String[] args) throws Exception {
+        ArrayList<String> stacks = new ArrayList<>(9);
+        ArrayList<Stack<Character>> stacks = new ArrayList<>(9);
 
-        for(int i=0; i< chars.length; i++){
-            nums[i] = Integer.parseInt(chars[i]);
-            System.out.println(nums[i]);
+        Stack<Character> stack0 = new Stack<>();
+        char[] chars = {'J','Z','G','V','T','D','B','N'};
+
+        for(char ch : chars){
+            stack0.push(ch);
         }
-        System.out.println(ifContains(nums));
-    }
+        stacks.add(stack0);
 
-    private static boolean ifContains(int[] nums) {
-
-        if (nums[2] > nums[1] || nums[0] > nums[3]) {
-            return false;
-        } else if (nums[0] >= nums[2]) {
-            return nums[1] <= nums[3] ? true : false;
-        } else {
-            return nums[1] >= nums[3] ? true : false;
-        }
+        System.out.println(stacks.get(0));
+        System.out.println(stacks.get(8));
     }
 }
