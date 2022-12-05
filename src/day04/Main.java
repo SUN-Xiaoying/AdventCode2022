@@ -9,7 +9,8 @@ public class Main {
         File file = new File("src/day04/day04.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
-        int reslut=0;
+        int result1 = 0;
+        int result2 = 0;
         String[] chars;
         int[] nums = new int[4];
 
@@ -24,24 +25,23 @@ public class Main {
                 nums[i] = Integer.parseInt(chars[i]);
             }
 
-            if(ifContains(nums)) {
-                reslut++;
+            if(!contains(nums)) {
+                result1++;
+            }
+            if(!notOverlaps(nums)) {
+                result2++;
             }
         }
 
-        System.out.println(reslut);
+        System.out.println(result2);
         br.close();
     }
 
+    private static boolean notOverlaps(int[] nums) {
+        return (nums[0] > nums[3]) || (nums[1] < nums[2]);
+    }
 
-    private static boolean ifContains(int[] nums) {
-        // What's going on ? 462 wrong?
-        if (nums[2] > nums[1] || nums[0] > nums[3]) {
-            return false;
-        } else if (nums[0] >= nums[2]) {
-            return nums[1] <= nums[3] ? true : false;
-        } else {
-            return nums[1] >= nums[3] ? true : false;
-        }
+    private static boolean contains(int[] nums) {
+        return (nums[0] <= nums[2] && nums[1] >= nums[3]) || (nums[0] >= nums[2] && nums[1] <= nums[3]);
     }
 }

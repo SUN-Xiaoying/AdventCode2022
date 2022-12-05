@@ -12,3 +12,5 @@ C
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 C
 src/day03/Main.java,1/4/144ae44f153b12c031b823c4d339f2295370ae3b
+C
+src/day01/day01.txt,2/3/239cf3a47fa7da13442061621c3c5771b4bf9310
