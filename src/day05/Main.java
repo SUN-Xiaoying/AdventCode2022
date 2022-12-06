@@ -7,12 +7,14 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        File file = new File("src/day04/day04.txt");
+        File file = new File("src/day05/day05.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
         String[] nums;
+        String result="";
 
-        ArrayList<String> stacks = init();
+        ArrayList<Stack<Character>> stacks = init();
+
         while ((line=br.readLine()) != null) {
             nums = line.replace("move ", "")
                     .replace(" from ", ",")
@@ -22,37 +24,67 @@ public class Main {
             if(nums.length != 3){
                 throw new Exception("Incorrect split");
             }
-            int from = Integer.parseInt(nums[1]);
-            int to = Integer.parseInt(nums[2]);
 
-            stacks.set(to, stacks.get());
+            int times = Integer.parseInt(nums[0]);
+            int from = Integer.parseInt(nums[1]) -1 ;
+            int to = Integer.parseInt(nums[2]) -1 ;
 
+            if(times > stacks.get(from).size()){
+                throw new Exception("More items than owning");
+            }
 
-
+            for(int i=0; i<times; i++){
+                char ch = stacks.get(from).pop();
+                stacks.get(to).push(ch);
+            }
         }
+
+        for(int i=0; i < stacks.size(); i++){
+            result += stacks.get(i).pop();
+        }
+
+        System.out.println(result);
+
         br.close();
+    }
+
+    private static Stack<Character> generateStack(char[] chars){
+        Stack<Character> chStack = new Stack<>();
+        for(char ch : chars){
+            chStack.push(ch);
+        }
+        return chStack;
     }
 
     private static ArrayList<Stack<Character>> init(){
         ArrayList<Stack<Character>> stacks = new ArrayList<>(9);
 
-        Stack<Character> stack0 = new Stack<>();
-        char[] chars = {'J','Z','G','V','T','D','B','N'};
+        char[] chars0 = {'N','B','D','T','V','G','Z','J'};
+        stacks.add(generateStack(chars0));
 
-        for(char ch : chars){
-            stack0.push(ch);
-        }
-        stacks.add(stack0);
+        char[] chars1 = {'S','R','M','D','W','P','F'};
+        stacks.add(generateStack(chars1));
 
-        stacks.add("JZGVTDBN");
-        stacks.add("FPWDNRS");
-        stacks.add("ZSRCV");
-        stacks.add("GHPZJTR");
-        stacks.add("FQZDNJCT");
-        stacks.add("MFSGWPVN");
-        stacks.add("QPBVCG");
-        stacks.add("NPBZ");
-        stacks.add("JPW");
+        char[] chars2 = {'V','C','R','S','Z'};
+        stacks.add(generateStack(chars2));
+
+        char[] chars3 = {'R','T','J','Z','P','H','G'};
+        stacks.add(generateStack(chars3));
+
+        char[] chars4 = {'T','C','J','N','D','Z','Q','F'};
+        stacks.add(generateStack(chars4));
+
+        char[] chars5 = {'N','V','P','W','G','S','F','M'};
+        stacks.add(generateStack(chars5));
+
+        char[] chars6 = {'G','C','V','B','P','Q'};
+        stacks.add(generateStack(chars6));
+
+        char[] chars7 = {'Z','B','P','N'};
+        stacks.add(generateStack(chars7));
+
+        char[] chars8 = {'W','P','J'};
+        stacks.add(generateStack(chars8));
 
         return stacks;
     }

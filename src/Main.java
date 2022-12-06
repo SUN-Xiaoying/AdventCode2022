@@ -6,7 +6,6 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        ArrayList<String> stacks = new ArrayList<>(9);
         ArrayList<Stack<Character>> stacks = new ArrayList<>(9);
 
         Stack<Character> stack0 = new Stack<>();
@@ -18,6 +17,7 @@ public class Main {
         stacks.add(stack0);
 
         System.out.println(stacks.get(0));
-        System.out.println(stacks.get(8));
+        System.out.println(stacks.get(0).pop());
+
     }
 }
