@@ -12,6 +12,7 @@ public class Main {
         String line;
         String[] nums;
         String result="";
+        Stack<Character> midStack = new Stack<>();
 
         ArrayList<Stack<Character>> stacks = init();
 
@@ -33,10 +34,16 @@ public class Main {
                 throw new Exception("More items than owning");
             }
 
+            // part 1
             for(int i=0; i<times; i++){
-                char ch = stacks.get(from).pop();
-                stacks.get(to).push(ch);
+                midStack.push(stacks.get(from).pop());
             }
+            // part 2
+            for(int i=0; i<times; i++){
+                stacks.get(to).push(midStack.pop());
+            }
+
+
         }
 
         for(int i=0; i < stacks.size(); i++){
